@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoPath Route Planner</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        .container{
+            width: 80%;
+            margin: auto;
+            margin-top: 40px;
+        }
+
+        h1{
+            color: #333;
+        }
+
+        form{
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+        }
+
+        select{
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+        
+
+        button{
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background-color: #0056b3;
+        }
+
+        .result{
+            margin-top: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+        }
+
+        img{
+            margin-top: 20px;
+            max-width: 100%;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🚗 GeoPath Route Planner</h1>
+
+    <form method="POST">
+
+        <label><b>Source:</b></label>
+        <select name="source">
+            {% for area in areas %}
+            <option value="{{ area }}">{{ area }}</option>
+            {% endfor %}
+        </select>
+
+        <br><br>
+
+        <label><b>Destination:</b></label>
+        <select name="destination">
+            {% for area in areas %}
+            <option value="{{ area }}">{{ area }}</option>
+            {% endfor %}
+        </select>
+
+        <br><br>
+
+        <button type="submit">Find Route</button>
+
+    </form>
+
+    {% if shortest_path %}
+    <div class="result">
+
+        <h2>Shortest Path</h2>
+
+        <h3>
+            {{ " → ".join(shortest_path) }}
+        </h3>
+
+        <h3>
+            Total Distance: {{ total_distance }} km
+        </h3>
+
+        <img src="{{ url_for('static', filename='route.png') }}"
+             alt="Route Graph">
+
+    </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
