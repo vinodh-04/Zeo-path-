@@ -1,6 +1,6 @@
-Zeo-Path:
+Geo-Path:
 
-ZeoPath is a route-finding web application that visualizes graphs and calculates the shortest path between locations using Dijkstra's Algorithm. The project provides an interactive interface where users can select source and destination nodes and view the optimal route along with the graph visualization.
+GeoPath is a route-finding web application that visualizes graphs and calculates the shortest path between locations using Dijkstra's Algorithm. The project provides an interactive interface where users can select source and destination nodes and view the optimal route along with the graph visualization.
 
 🚀 Features:
 
